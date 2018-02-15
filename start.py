@@ -88,6 +88,9 @@ def set_up_nginx_files(m2ee):
         mxbuild_upstream = 'proxy_pass http://mendix_mxbuild'
     else:
         mxbuild_upstream = 'return 501'
+    location_blocks = []
+    root_location = ''
+
     with open('nginx/conf/nginx.conf') as fh:
         lines = ''.join(fh.readlines())
     lines = lines.replace(
@@ -169,9 +172,9 @@ def activate_license():
         logger.debug('A license was supplied so going to activate it')
         prefs_body = prefs_template.replace(
             '{{LICENSE_ID}}', license_id
-            ).replace(
+        ).replace(
             '{{LICENSE_KEY}}', license_key
-            )
+        )
         with open(os.path.join(prefs_dir, 'prefs.xml'), 'w') as prefs_file:
             prefs_file.write(prefs_body)
 
