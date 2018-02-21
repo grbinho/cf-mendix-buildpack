@@ -359,7 +359,7 @@ def ensure_and_get_mono(mx_version, cache_dir):
     except NotFoundException:
         logging.debug('Mono not found in default locations')
         download_and_unpack(
-            'https://1drv.ms/u/s!AqCPbGFpJaZmi55jin6knpkgAErBzQ',
+            'https://s3-eu-west-1.amazonaws.com/mx-buildpack/mono-5.8.0.108-mx.tar.gz',
             #get_blobstore_url('/mx-buildpack/experimental/' + mono_version + '-mx.tar.gz'),
             os.path.join(fallback_location, mono_version),
             cache_dir
